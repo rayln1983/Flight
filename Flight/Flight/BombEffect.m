@@ -61,7 +61,7 @@
     self.effect1 = [CCSpriteFrame frameWithTexture:self.texture rect:CGRectMake(214, 115, 26, 27)];
     self.effect2 = [CCSpriteFrame frameWithTexture:self.texture rect:CGRectMake(200, 42, 40, 42)];
     self.effect3 = [CCSpriteFrame frameWithTexture:self.texture rect:CGRectMake(143, 91, 36, 39)];
-    self.array = [[NSMutableArray alloc] initWithObjects:self.effect1,self.effect2,self.effect3,self.effect2,self.effect1, nil];
+    self.array = [[NSMutableArray alloc] initWithObjects:self.effect2,self.effect3,self.effect1, nil];
 }
 - (void)runMiddleEffect{
     CCAnimation* animation = [CCAnimation animationWithSpriteFrames:self.array delay:.1];

@@ -225,6 +225,8 @@
 		24A83D0917FF814000F80EFE /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D0817FF813F00F80EFE /* Bullet.m */; };
 		24A83D0F17FFB88900F80EFE /* EnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D0E17FFB88700F80EFE /* EnemySprite.m */; };
 		24A83D1217FFBCFF00F80EFE /* BombEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D1117FFBCFD00F80EFE /* BombEffect.m */; };
+		24A83D18180077B300F80EFE /* EnemyMid.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D17180077B100F80EFE /* EnemyMid.m */; };
+		24A83D1B18007E7800F80EFE /* EnemySmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D1A18007E7500F80EFE /* EnemySmall.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -647,6 +649,10 @@
 		24A83D0E17FFB88700F80EFE /* EnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemySprite.m; sourceTree = "<group>"; };
 		24A83D1017FFBCFB00F80EFE /* BombEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombEffect.h; sourceTree = "<group>"; };
 		24A83D1117FFBCFD00F80EFE /* BombEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BombEffect.m; sourceTree = "<group>"; };
+		24A83D16180077AE00F80EFE /* EnemyMid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMid.h; sourceTree = "<group>"; };
+		24A83D17180077B100F80EFE /* EnemyMid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMid.m; sourceTree = "<group>"; };
+		24A83D1918007E7300F80EFE /* EnemySmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemySmall.h; sourceTree = "<group>"; };
+		24A83D1A18007E7500F80EFE /* EnemySmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemySmall.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1403,12 +1409,16 @@
 				24A83CFD17FE971B00F80EFE /* PhysicsNode.m */,
 				24A83CF917FE947600F80EFE /* Plane.h */,
 				24A83CFA17FE947600F80EFE /* Plane.m */,
-				24A83CFF17FE9AEC00F80EFE /* EnemyBig.h */,
 				24A83D0017FE9AEC00F80EFE /* EnemyBig.m */,
+				24A83CFF17FE9AEC00F80EFE /* EnemyBig.h */,
 				24A83D0717FF813D00F80EFE /* Bullet.h */,
 				24A83D0817FF813F00F80EFE /* Bullet.m */,
 				24A83D0D17FFB88500F80EFE /* EnemySprite.h */,
 				24A83D0E17FFB88700F80EFE /* EnemySprite.m */,
+				24A83D16180077AE00F80EFE /* EnemyMid.h */,
+				24A83D17180077B100F80EFE /* EnemyMid.m */,
+				24A83D1918007E7300F80EFE /* EnemySmall.h */,
+				24A83D1A18007E7500F80EFE /* EnemySmall.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -1691,6 +1701,8 @@
 				24A83D0917FF814000F80EFE /* Bullet.m in Sources */,
 				24A83D0F17FFB88900F80EFE /* EnemySprite.m in Sources */,
 				24A83D1217FFBCFF00F80EFE /* BombEffect.m in Sources */,
+				24A83D18180077B300F80EFE /* EnemyMid.m in Sources */,
+				24A83D1B18007E7800F80EFE /* EnemySmall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1796,6 +1808,7 @@
 				24A83C5C17FE6B1500F80EFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

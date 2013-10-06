@@ -28,11 +28,24 @@ enum{
     if (self = [super init]) {
         [self initPhysics];
         [self createBackground];
+        [self createPoint];
         [self createPlayer];
+        [self schedule:@selector(createEnemy) interval:1];
         [self scheduleUpdate];
         
     }
     return self;
+}
+
+- (void)createPoint{
+    _sum = 0;
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    self.point = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:32];
+    [self.point setColor:ccBLACK];
+    [self.point setAnchorPoint:ccp(1, 1)];
+    //CGPoint *p = self._point
+    [self.point setPosition:ccp(winSize.width-20, winSize.height-20)];
+    [self addChild:self.point z:100];
 }
 
 //create background
@@ -41,7 +54,35 @@ enum{
     Background *background = [[Background alloc] init];
     [layer addChild:background];
     [self addChild:layer];
+    
     [background release];
+}
+
+- (void)createEnemy{
+
+    int number = [Util random:0 :9];
+    if(number <= 1){
+        EnemyBig *enemyBig = [[EnemyBig alloc] initWithSpace:_space];
+        [self addChild:enemyBig];
+        //release
+        [enemyBig release];
+        
+    }else if(number >1 && number <=4){
+        EnemyMid *enemy = [[EnemyMid alloc] initWithSpace:_space];
+        [self addChild:enemy];
+        //release
+        [enemy release];
+                
+    }else{
+        EnemySmall *enemy = [[EnemySmall alloc] initWithSpace:_space];
+        [self addChild:enemy];
+        //release
+        [enemy release];
+
+        
+    }
+    
+    
 }
 
 // init physics
@@ -51,7 +92,12 @@ enum{
     _space = cpSpaceNew();
     _space->gravity = ccp(xGravity, yGravity);
     cpSpaceAddCollisionHandler(_space, tBullet, tEnemy, beginBulletToEnemy, NULL, NULL, NULL, NULL);
-    cpSpaceAddCollisionHandler(_space, tBullet, tBomb, beginBulletToBomb, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tBullet, tBomb, skipCollision, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tPlane, tEnemy, beginPlaneToEnemy, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tEnemy, tEnemy, skipCollision, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tPlane, tBomb, skipCollision, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tEnemy, tBomb, skipCollision, NULL, NULL, NULL, NULL);
+
 }
 int beginBulletToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
     //CP_ARBITER_GET_SHAPES取出是哪两个shape发生了碰撞，a，b是emery还是bullet，与之前设置回调函数时的第2，3参数的顺序有关
@@ -64,38 +110,41 @@ int beginBulletToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
     //返回0是物体撞击事件无效
 	return 0;
 }
-int beginBulletToBomb(cpArbiter *arb, cpSpace *space, void *unused){
+int skipCollision(cpArbiter *arb, cpSpace *space, void *unused){
+	return 0;
+}
+int beginPlaneToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainGame scene] withColor:ccc3(195, 199, 202)]];
+    
 	return 0;
 }
 //碰撞的处理函数
 void postStepARemove(cpSpace *space, cpShape *shape, void *unused)
 {
     PhysicsSprite *p = shape->data;
-    //NSLog(@"A:%@",p);
-    if(p && !p._isDead){
+    if(p && !p.isDead){
         [p handleCollision];
     }
 }
 //碰撞的处理函数
-static void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
+void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
 {
     PhysicsSprite *p = shape->data;
     //NSLog(@"%i", shape->collision_type);
-    if(p && !p._isDead){
-        [p handleCollision];
+    if(p && !p.isDead){
+        int pointer = [p handleCollision];
+        
+        _sum += pointer;
+        //point.getBody;
+        //[self.point setString:<#(NSString *)#>]
+        //[self.point ]
     }
 }
 
 - (void)createPlayer{
-    Player *play = [[Player alloc] initWithSpace:_space];
-    [self addChild:play];
+    self.play = [[Player alloc] initWithSpace:_space];
+    [self addChild:self.play];
     
-    EnemyBig *enemyBig = [[EnemyBig alloc] initWithSpace:_space];
-    [self addChild:enemyBig];
-    
-    //release
-    [enemyBig release];
-    [play release];
 }
 
 -(void) update:(ccTime)time{
@@ -107,9 +156,18 @@ static void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
 		cpSpaceStep(_space, dt);
 	}
 }
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint p1 = [touch locationInView:nil];
+    
+    self.play.plane.getBody->p = ccp(p1.x, 480-p1.y);
+    
+}
 
 - (void)dealloc{
-    
+    [self.play release];
+
     [super dealloc];
 }
 @end

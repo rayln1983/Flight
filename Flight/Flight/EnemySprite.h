@@ -14,5 +14,5 @@
 @interface EnemySprite : PhysicsSprite {
     BombEffect *_bomb;
 }
-
+@property (nonatomic, assign) int point;
 @end

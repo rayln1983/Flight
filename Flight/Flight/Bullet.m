@@ -8,7 +8,7 @@
 
 #import "Bullet.h"
 enum{
-    bulletSpeed = 1000
+    bulletSpeed = 2000
 };
 
 @implementation Bullet
@@ -42,8 +42,6 @@ enum{
 }
 
 - (void)handleCollision{
-    cpSpaceRemoveBody(_space, _body);
-    cpSpaceRemoveShape(_space, _shape);
     [self removeFromParentAndCleanup:YES];
 }
 @end
