@@ -50,8 +50,9 @@
 //    [super dealloc];
 //}
 
-- (id)initWithSpace:(cpSpace *)space__{
+- (id)initwithSpaceAndLabel:(cpSpace *)space__ :(CCLabelTTF *)label__{
     if (self = [super initWithSpace:space__ :CGRectMake(0, 0, 113, 164)]) {
+        self.lable = label__;
         self.point = 10000;
     }
     return self;

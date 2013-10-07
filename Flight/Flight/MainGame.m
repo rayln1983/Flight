@@ -62,19 +62,19 @@ enum{
 
     int number = [Util random:0 :9];
     if(number <= 1){
-        EnemyBig *enemyBig = [[EnemyBig alloc] initWithSpace:_space];
+        EnemyBig *enemyBig = [[EnemyBig alloc] initwithSpaceAndLabel:_space :self.point];
         [self addChild:enemyBig];
         //release
         [enemyBig release];
         
     }else if(number >1 && number <=4){
-        EnemyMid *enemy = [[EnemyMid alloc] initWithSpace:_space];
+        EnemyMid *enemy = [[EnemyMid alloc] initwithSpaceAndLabel:_space :self.point];
         [self addChild:enemy];
         //release
         [enemy release];
                 
     }else{
-        EnemySmall *enemy = [[EnemySmall alloc] initWithSpace:_space];
+        EnemySmall *enemy = [[EnemySmall alloc] initwithSpaceAndLabel:_space :self.point];
         [self addChild:enemy];
         //release
         [enemy release];
@@ -97,7 +97,7 @@ enum{
     cpSpaceAddCollisionHandler(_space, tEnemy, tEnemy, skipCollision, NULL, NULL, NULL, NULL);
     cpSpaceAddCollisionHandler(_space, tPlane, tBomb, skipCollision, NULL, NULL, NULL, NULL);
     cpSpaceAddCollisionHandler(_space, tEnemy, tBomb, skipCollision, NULL, NULL, NULL, NULL);
-
+    
 }
 int beginBulletToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
     //CP_ARBITER_GET_SHAPES取出是哪两个shape发生了碰撞，a，b是emery还是bullet，与之前设置回调函数时的第2，3参数的顺序有关
@@ -135,6 +135,7 @@ void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
         int pointer = [p handleCollision];
         
         _sum += pointer;
+        //[self _sum];
         //point.getBody;
         //[self.point setString:<#(NSString *)#>]
         //[self.point ]

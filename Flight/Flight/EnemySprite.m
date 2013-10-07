@@ -40,7 +40,9 @@ enum{
         _shape->collision_type = 3;
         [_bomb runMiddleEffect:self];
         [self scheduleOnce:@selector(clear) delay:.5];
-        
+        NSString *label = [self.lable string];
+        int sumTemp = [label intValue];
+        [self.lable setString:[NSString stringWithFormat:@"%i",(self.point+sumTemp)]];
         return self.point;
     }
     

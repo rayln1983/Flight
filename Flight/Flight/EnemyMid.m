@@ -10,8 +10,9 @@
 
 
 @implementation EnemyMid
-- (id)initWithSpace:(cpSpace *)space__{
+- (id)initwithSpaceAndLabel:(cpSpace *)space__ :(CCLabelTTF *)labe__{
     if (self = [super initWithSpace:space__ :CGRectMake(131, 0, 67, 90)]) {
+        self.lable = labe__;
         _life = 3;
         cpBodySetVel(_body, cpv(0, -100));
         self.point = 3000;

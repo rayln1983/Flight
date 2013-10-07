@@ -15,4 +15,7 @@
     BombEffect *_bomb;
 }
 @property (nonatomic, assign) int point;
+@property (nonatomic, strong) CCLabelTTF *lable;
+
+- (id)initwithSpaceAndLabel:(cpSpace *)space :(CCLabelTTF *)label;
 @end
