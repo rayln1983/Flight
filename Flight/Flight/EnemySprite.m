@@ -24,7 +24,7 @@ enum{
 - (id)initWithSpace:(cpSpace *)space__:(CGRect)rect__{
     if (self = [super initWithSpace:space__ :rect__]) {
         _body->p = ccp([Util random:minRandom :maxRandom], yPosition);
-        cpBodySetVel(_body, cpv(xSpeed, ySpeed));
+        
         _shape->collision_type = 2;
         _life = sLife;
         _bomb = [[BombEffect alloc] initWithTexture:_spriteTexture];

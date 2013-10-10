@@ -40,8 +40,22 @@ enum{
     return self;
 
 }
+- (id)initWithSpaceAndPosition:(cpSpace *)space__ :(Plane *)plane__ :(CGPoint)point__{
+    if(self = [super initWithSpace:space__ :CGRectMake(64, 235, 12, 20)]){
+        _body->p = ccp(plane__.getBody->p.x+point__.x, plane__.getBody->p.y+point__.y);
+        _shape->collision_type = 1;
+        cpBodySetVel(_body, cpv(0, bulletSpeed));
+    }
+    return self;
+    
+}
 
-- (void)handleCollision{
+- (id)handleCollision{
     [self removeFromParentAndCleanup:YES];
+    return 0;
+}
+
+- (void)dealloc{
+    [super dealloc];
 }
 @end

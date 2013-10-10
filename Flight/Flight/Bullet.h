@@ -17,5 +17,5 @@
 - (id)initWithSpaceT:(cpSpace *)space__;
 - (id)initWithSpaceRed:(cpSpace *)space__ :(Plane *)plane__;
 - (id)initWithSpaceBlue:(cpSpace *)space__ :(Plane *)plane__;
-    
+- (id)initWithSpaceAndPosition:(cpSpace *)space__ :(Plane *)plane__ :(CGPoint)point__;
 @end

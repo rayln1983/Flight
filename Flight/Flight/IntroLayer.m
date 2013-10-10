@@ -60,7 +60,16 @@
 
 -(void) makeTransition:(ccTime)dt
 {
+    Test1 *t2 = [[Test1 alloc] init];
+    self.t = t2;
+    [t2 release];
+    NSLog(@"===test: %i", [self.t retainCount]);
+    
 	CCScene *scene = [CCBReader sceneWithNodeGraphFromFile:@"StartMenu.ccbi"];
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene withColor:ccWHITE]];
+}
+- (void)dealloc{
+    [_t release];
+    [super dealloc];
 }
 @end

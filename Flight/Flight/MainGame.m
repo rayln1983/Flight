@@ -30,11 +30,19 @@ enum{
         [self createBackground];
         [self createPoint];
         [self createPlayer];
-        [self schedule:@selector(createEnemy) interval:1];
-        [self scheduleUpdate];
         
+        [self scheduleUpdate];
+        [self scheduleOnce:@selector(controlEnemy) delay:0];
+        [self scheduleOnce:@selector(controlEnemy) delay:120];
+        [self scheduleOnce:@selector(controlEnemy) delay:240];
     }
     return self;
+}
+
+- (void)controlEnemy{
+    self.internal = self.internal * .5;
+    [self unschedule:@selector(createEnemy)];
+    [self schedule:@selector(createEnemy) interval:self.internal];
 }
 
 - (void)createPoint{
@@ -62,33 +70,40 @@ enum{
 
     int number = [Util random:0 :9];
     if(number <= 1){
-        EnemyBig *enemyBig = [[EnemyBig alloc] initwithSpaceAndLabel:_space :self.point];
+        EnemyBig *enemyBig = [[EnemyBig alloc] initWithSpaceAndLabel:_space :self.point];
         [self addChild:enemyBig];
         //release
         [enemyBig release];
+        [self scheduleOnce:@selector(updateSpeed) delay:100];
+        [self scheduleOnce:@selector(updateSpeed) delay:200];
         
     }else if(number >1 && number <=4){
-        EnemyMid *enemy = [[EnemyMid alloc] initwithSpaceAndLabel:_space :self.point];
+        EnemyMid *enemy = [[EnemyMid alloc] initWithSpaceAndLabel:_space :self.point :self.mSpeed];
         [self addChild:enemy];
         //release
         [enemy release];
                 
     }else{
-        EnemySmall *enemy = [[EnemySmall alloc] initwithSpaceAndLabel:_space :self.point];
+        EnemySmall *enemy = [[EnemySmall alloc] initWithSpaceAndLabel:_space :self.point :self.sSpeed];
         [self addChild:enemy];
         //release
         [enemy release];
-
         
     }
     
     
 }
-
+- (void)updateSpeed{
+    self.sSpeed -= 40;
+    self.mSpeed -= 40;
+}
 // init physics
 - (void)initPhysics{
     self.isAccelerometerEnabled = YES;
     self.isTouchEnabled = YES;
+    self.sSpeed = -150;
+    self.mSpeed = -100;
+    self.internal = 1.0f;
     _space = cpSpaceNew();
     _space->gravity = ccp(xGravity, yGravity);
     cpSpaceAddCollisionHandler(_space, tBullet, tEnemy, beginBulletToEnemy, NULL, NULL, NULL, NULL);
@@ -97,6 +112,7 @@ enum{
     cpSpaceAddCollisionHandler(_space, tEnemy, tEnemy, skipCollision, NULL, NULL, NULL, NULL);
     cpSpaceAddCollisionHandler(_space, tPlane, tBomb, skipCollision, NULL, NULL, NULL, NULL);
     cpSpaceAddCollisionHandler(_space, tEnemy, tBomb, skipCollision, NULL, NULL, NULL, NULL);
+    cpSpaceAddCollisionHandler(_space, tBullet, tPlane, skipCollision, NULL, NULL, NULL, NULL);
     
 }
 int beginBulletToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
@@ -115,9 +131,22 @@ int skipCollision(cpArbiter *arb, cpSpace *space, void *unused){
 }
 int beginPlaneToEnemy(cpArbiter *arb, cpSpace *space, void *unused){
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainGame scene] withColor:ccc3(195, 199, 202)]];
+    //CP_ARBITER_GET_SHAPES(arb, a, b);
+    //cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepPlaneRemove, a, NULL);
     
 	return 0;
 }
+
+//碰撞的处理函数
+void postStepPlaneRemove(cpSpace *space, cpShape *shape, void *unused)
+{
+    PhysicsSprite *p = shape->data;
+    if(p && !p.isDead){
+        [p handleCollision];
+        
+    }
+}
+
 //碰撞的处理函数
 void postStepARemove(cpSpace *space, cpShape *shape, void *unused)
 {
@@ -142,10 +171,10 @@ void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
     }
 }
 
+
 - (void)createPlayer{
-    self.play = [[Player alloc] initWithSpace:_space];
+    self.play = [[[Player alloc] initWithSpace:_space] autorelease];
     [self addChild:self.play];
-    
 }
 
 -(void) update:(ccTime)time{
@@ -167,7 +196,7 @@ void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
 }
 
 - (void)dealloc{
-    [self.play release];
+    [_play release];
 
     [super dealloc];
 }

@@ -13,9 +13,10 @@
 
 @interface EnemySprite : PhysicsSprite {
     BombEffect *_bomb;
+    int speed;
 }
 @property (nonatomic, assign) int point;
 @property (nonatomic, strong) CCLabelTTF *lable;
-
-- (id)initwithSpaceAndLabel:(cpSpace *)space :(CCLabelTTF *)label;
+- (id)initWithSpaceAndLabel:(cpSpace *)space :(CCLabelTTF *)label :(int)speed;
+- (id)initWithSpaceAndLabel:(cpSpace *)space :(CCLabelTTF *)label;
 @end

@@ -18,4 +18,5 @@
 @property (nonatomic, strong) Plane *plane;
 @property (nonatomic, strong) Bullet *bullet;
 @property (nonatomic, assign) int type;
+
 @end

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/MainGame.m"
-         timestampString = "402738435.231104"
+         timestampString = "403004065.081122"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
          landmarkName = "beginBulletToEnemy()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -21,7 +21,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/PhysicsSprite.m"
-         timestampString = "402682803.8802"
+         timestampString = "402914910.845546"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "32"
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/Player.m"
-         timestampString = "402625976.377643"
+         timestampString = "402916270.226155"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "@implementation Player"
          landmarkType = "3">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/MainGame.m"
-         timestampString = "402756523.382799"
+         timestampString = "403004065.081122"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "156"
+         endingLineNumber = "156"
          landmarkName = "postStepARemove()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -60,7 +60,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/EnemySprite.m"
-         timestampString = "402806699.832605"
+         timestampString = "402896772.774384"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "46"
@@ -73,7 +73,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Flight/EnemySprite.m"
-         timestampString = "402753431.625642"
+         timestampString = "402896772.774384"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "39"
@@ -85,14 +85,14 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Flight/EnemyMid.m"
-         timestampString = "402803746.649985"
+         filePath = "Flight/Bullet.m"
+         timestampString = "402911058.896219"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "12"
-         endingLineNumber = "12"
-         landmarkName = "@implementation EnemyMid"
-         landmarkType = "3">
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "-initWithSpaceAndPosition:::"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -14,11 +14,19 @@
 
 - (id)initWithSpace:(cpSpace *)space__ :(CGRect)rect__{
     if (self = [super initWithSpace:space__ :rect__]) {
-        
         _body->p = ccp(160, 100);
         _shape->collision_type = 0;
     }
     return self;
 }
 
+- (id)handleCollision{
+    [self removeFromParentAndCleanup:YES];
+    return YES;
+}
+
+- (void)dealloc{
+    NSLog(@"plane destory!!!");
+    [super dealloc];
+}
 @end

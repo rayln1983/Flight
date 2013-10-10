@@ -18,10 +18,14 @@
 int _sum;
 
 @interface MainGame : CCLayer {
-    cpSpace *_space;
-    
+    //cpSpace *_space;
 }
+@property (nonatomic, assign) cpSpace *space;
 @property (nonatomic, strong) Player *play;
 @property (nonatomic, strong) CCLabelTTF *point;
+@property (nonatomic, assign) int sSpeed;
+@property (nonatomic, assign) int mSpeed;
+@property (nonatomic, assign) float internal;
+
 + (CCScene *)scene;
 @end

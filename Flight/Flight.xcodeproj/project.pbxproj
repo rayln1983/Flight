@@ -227,6 +227,9 @@
 		24A83D1217FFBCFF00F80EFE /* BombEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D1117FFBCFD00F80EFE /* BombEffect.m */; };
 		24A83D18180077B300F80EFE /* EnemyMid.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D17180077B100F80EFE /* EnemyMid.m */; };
 		24A83D1B18007E7800F80EFE /* EnemySmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D1A18007E7500F80EFE /* EnemySmall.m */; };
+		24A83D9E1803F61000F80EFE /* Test1.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83D9D1803F61000F80EFE /* Test1.m */; };
+		24A83DA11803F61C00F80EFE /* Test2.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83DA01803F61C00F80EFE /* Test2.m */; };
+		24A83DA41803F62800F80EFE /* Test3.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A83DA31803F62800F80EFE /* Test3.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -653,6 +656,12 @@
 		24A83D17180077B100F80EFE /* EnemyMid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMid.m; sourceTree = "<group>"; };
 		24A83D1918007E7300F80EFE /* EnemySmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemySmall.h; sourceTree = "<group>"; };
 		24A83D1A18007E7500F80EFE /* EnemySmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemySmall.m; sourceTree = "<group>"; };
+		24A83D9C1803F61000F80EFE /* Test1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1.h; sourceTree = "<group>"; };
+		24A83D9D1803F61000F80EFE /* Test1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1.m; sourceTree = "<group>"; };
+		24A83D9F1803F61B00F80EFE /* Test2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2.h; sourceTree = "<group>"; };
+		24A83DA01803F61C00F80EFE /* Test2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2.m; sourceTree = "<group>"; };
+		24A83DA21803F62800F80EFE /* Test3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3.h; sourceTree = "<group>"; };
+		24A83DA31803F62800F80EFE /* Test3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test3.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1428,6 +1437,12 @@
 			children = (
 				24A83D0417FEFAF900F80EFE /* Util.h */,
 				24A83D0517FEFAF900F80EFE /* Util.m */,
+				24A83D9C1803F61000F80EFE /* Test1.h */,
+				24A83D9D1803F61000F80EFE /* Test1.m */,
+				24A83D9F1803F61B00F80EFE /* Test2.h */,
+				24A83DA01803F61C00F80EFE /* Test2.m */,
+				24A83DA21803F62800F80EFE /* Test3.h */,
+				24A83DA31803F62800F80EFE /* Test3.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1703,6 +1718,9 @@
 				24A83D1217FFBCFF00F80EFE /* BombEffect.m in Sources */,
 				24A83D18180077B300F80EFE /* EnemyMid.m in Sources */,
 				24A83D1B18007E7800F80EFE /* EnemySmall.m in Sources */,
+				24A83D9E1803F61000F80EFE /* Test1.m in Sources */,
+				24A83DA11803F61C00F80EFE /* Test2.m in Sources */,
+				24A83DA41803F62800F80EFE /* Test3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1725,6 +1743,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1744,6 +1763,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

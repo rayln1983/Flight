@@ -35,7 +35,7 @@ enum{
     return self;
 }
 - (void)update:(ccTime)time{
-    if((_body->p.x<-outScreen || _body->p.x>_winSize.width+outScreen) || (_body->p.y<-outScreen || _body->p.y > _winSize.height+outScreen)){
+    if((_body->p.x<-outScreen || _body->p.x>_winSize.width+outScreen) || (_body->p.y<-outScreen || _body->p.y > _winSize.height+outScreen)){        
         [self removeFromParentAndCleanup:YES];
     }
 }
@@ -79,6 +79,10 @@ enum{
 
 - (cpShape *)getShape{
     return _shape;
+}
+
+- (id)handleCollision{
+    return 0;
 }
 
 -(void) dealloc
