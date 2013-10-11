@@ -26,7 +26,7 @@
 }
 
 - (void)dealloc{
-    NSLog(@"plane destory!!!");
     [super dealloc];
 }
+
 @end

@@ -103,7 +103,7 @@ enum{
     self.isTouchEnabled = YES;
     self.sSpeed = -150;
     self.mSpeed = -100;
-    self.internal = 1.0f;
+    self.internal = 2.0f;
     _space = cpSpaceNew();
     _space->gravity = ccp(xGravity, yGravity);
     cpSpaceAddCollisionHandler(_space, tBullet, tEnemy, beginBulletToEnemy, NULL, NULL, NULL, NULL);
@@ -186,6 +186,16 @@ void postStepBRemove(cpSpace *space, cpShape *shape, void *unused)
 		cpSpaceStep(_space, dt);
 	}
 }
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint p1 = [touch locationInView:nil];
+    //p1.y = 480-p1.y;
+    CGPoint p3 = [self convertToNodeSpace:[[CCDirector sharedDirector] convertToGL:p1]];
+    CGRect rect = [self.play.plane boundingBox];
+    bool bo = CGRectContainsPoint(rect, p3);
+    //self.play.plane.getBody->
+}
+
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     UITouch *touch = [touches anyObject];
