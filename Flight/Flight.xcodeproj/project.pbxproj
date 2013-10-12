@@ -21,7 +21,6 @@
 		24A83A6C17FE6B1200F80EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A83A6B17FE6B1200F80EFE /* UIKit.framework */; };
 		24A83A6E17FE6B1200F80EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A83A6D17FE6B1200F80EFE /* Foundation.framework */; };
 		24A83A7017FE6B1200F80EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A83A6F17FE6B1200F80EFE /* CoreGraphics.framework */; };
-		24A83A7217FE6B1200F80EFE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A83A7117FE6B1200F80EFE /* GameKit.framework */; };
 		24A83A7617FE6B1200F80EFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A83A7517FE6B1200F80EFE /* Default.png */; };
 		24A83A7817FE6B1200F80EFE /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A83A7717FE6B1200F80EFE /* Default-Landscape~ipad.png */; };
 		24A83A7A17FE6B1200F80EFE /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A83A7917FE6B1200F80EFE /* fps_images.png */; };
@@ -254,7 +253,6 @@
 		24A83A6B17FE6B1200F80EFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		24A83A6D17FE6B1200F80EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		24A83A6F17FE6B1200F80EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		24A83A7117FE6B1200F80EFE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		24A83A7517FE6B1200F80EFE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		24A83A7717FE6B1200F80EFE /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		24A83A7917FE6B1200F80EFE /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/fps_images.png; sourceTree = "<group>"; };
@@ -689,7 +687,6 @@
 				24A83A6C17FE6B1200F80EFE /* UIKit.framework in Frameworks */,
 				24A83A6E17FE6B1200F80EFE /* Foundation.framework in Frameworks */,
 				24A83A7017FE6B1200F80EFE /* CoreGraphics.framework in Frameworks */,
-				24A83A7217FE6B1200F80EFE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,7 +722,6 @@
 				24A83A6B17FE6B1200F80EFE /* UIKit.framework */,
 				24A83A6D17FE6B1200F80EFE /* Foundation.framework */,
 				24A83A6F17FE6B1200F80EFE /* CoreGraphics.framework */,
-				24A83A7117FE6B1200F80EFE /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1492,6 +1488,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					24A83A5D17FE6B1200F80EFE = {
+						DevelopmentTeam = T989PXECML;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 24A83A5917FE6B1200F80EFE /* Build configuration list for PBXProject "Flight" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1797,17 +1803,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Flight/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"Flight/libs/kazmath/include\"";
 				INFOPLIST_FILE = Flight/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Flight/libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1817,16 +1827,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Flight/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"Flight/libs/kazmath/include\"";
 				INFOPLIST_FILE = Flight/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Flight/libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
